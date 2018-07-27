@@ -1,0 +1,26 @@
+import {Component, OnInit} from '@angular/core';
+import {Auth0Service} from '../../services/auth0.service';
+import {Router} from '@angular/router';
+
+@Component({
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.css']
+})
+export class DashboardComponent implements OnInit {
+  title = 'Lightberry Console';
+
+  constructor(
+    private auth0Service: Auth0Service,
+    private router: Router
+  ) { }
+
+  ngOnInit() {
+  }
+
+  handleLogout() {
+    Auth0Service.logout();
+    this.router.navigate(['/login']);
+  }
+
+}
