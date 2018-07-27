@@ -8,13 +8,22 @@ import { AuthCallbackComponent } from './components/auth-callback/auth-callback.
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import {Auth0Guard} from './services/auth0.guard';
+import { DevicesComponent } from './components/dashboard/devices/devices.component';
+import { AdminComponent } from './components/dashboard/admin/admin.component';
+import { SidebarComponent } from './components/dashboard/sidebar/sidebar.component';
 
 const appRoutes: Routes = [
-  { path: '', component: DashboardComponent,
-    canActivate: [Auth0Guard]
+  { path: 'dashboard', component: DashboardComponent,
+    canActivate: [Auth0Guard],
+    children: [
+      { path: 'devices', component: DevicesComponent},
+      { path: 'admin', component: AdminComponent },
+      { path: '', redirectTo: 'devices', pathMatch: 'full' }
+    ]
   },
   { path: 'login', component: LoginComponent },
-  { path: 'callback', component: AuthCallbackComponent }
+  { path: 'callback', component: AuthCallbackComponent },
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
 ];
 
 
@@ -23,7 +32,10 @@ const appRoutes: Routes = [
     AppComponent,
     AuthCallbackComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    DevicesComponent,
+    AdminComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,

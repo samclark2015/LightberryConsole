@@ -38,6 +38,10 @@ export class Auth0Service {
     return new Date().getTime() < expiresAt;
   }
 
+  static getToken(): string {
+    return localStorage.getItem('access_token');
+  }
+
   constructor(
     private router: Router
   ) {
