@@ -1,3 +1,18 @@
-<p>
-  devices works!
-</p>
+<h3>Your Devices</h3>
+<hr />
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">Name</th>
+    <th scope="col">Description</th>
+    <th scope="col">State</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let device of devices">
+    <td>{{device.metadata.friendlyName}}</td>
+    <td>{{device.metadata.description}}</td>
+    <td>{{device.state}}</td>
+  </tr>
+  </tbody>
+</table>

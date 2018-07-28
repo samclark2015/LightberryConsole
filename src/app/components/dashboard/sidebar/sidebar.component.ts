@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
-class SidebarItem {
+export class SidebarItem {
   constructor(public name: string, public href: string) {}
 }
 
@@ -11,10 +11,7 @@ class SidebarItem {
 })
 export class SidebarComponent implements OnInit {
 
-  items: SidebarItem[] = [
-    new SidebarItem('Devices', '/dashboard/devices'),
-    new SidebarItem('Admin', '/dashboard/admin')
-  ]
+  @Input('items') items: SidebarItem[];
 
   constructor() { }
 

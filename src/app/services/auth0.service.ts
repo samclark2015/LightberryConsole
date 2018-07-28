@@ -1,16 +1,17 @@
 import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
 import * as auth0 from 'auth0-js';
+import {HttpHeaders} from '@angular/common/http';
 
 
 @Injectable()
 export class Auth0Service {
 
   auth0 = new auth0.WebAuth({
-    clientID: 'zF5b6Tw8r712dxTfJF3hcbjb8jMKxxOs',
+    clientID: '6pkf2jkq6QmHecxdjenQFGw1LLgfSx7K',
     domain: 'samclarkme.auth0.com',
     responseType: 'token id_token',
-    audience: 'https://samclarkme.auth0.com/userinfo',
+    audience: 'http://localhost:1997/api',
     redirectUri: 'http://localhost:4200/callback',
     scope: 'openid'
   });
@@ -61,6 +62,10 @@ export class Auth0Service {
         console.log(err);
       }
     });
+  }
+
+  public getToken(): string {
+    return localStorage.getItem('access_token');
   }
 
 }

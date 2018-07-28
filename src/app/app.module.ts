@@ -11,6 +11,8 @@ import {Auth0Guard} from './services/auth0.guard';
 import { DevicesComponent } from './components/dashboard/devices/devices.component';
 import { AdminComponent } from './components/dashboard/admin/admin.component';
 import { SidebarComponent } from './components/dashboard/sidebar/sidebar.component';
+import {HttpClientModule} from '@angular/common/http';
+import {LightberryService} from './services/lightberry.service';
 
 const appRoutes: Routes = [
   { path: 'dashboard', component: DashboardComponent,
@@ -39,13 +41,15 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
     )
   ],
   providers: [
-    Auth0Service
+    Auth0Service,
+    LightberryService
   ],
   bootstrap: [AppComponent]
 })

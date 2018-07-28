@@ -1,18 +1,20 @@
-<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-  <a class="navbar-brand col-sm-3 col-md-2 mr-0" routerLink="/">{{ title }}</a>
-  <ul class="navbar-nav px-3">
-    <li class="nav-item text-nowrap">
-      <a class="nav-link" (click)="handleLogout()">Logout</a>
-    </li>
-  </ul>
-</nav>
+<div *ngIf="user">
+  <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" routerLink="/">{{ title }}</a>
+    <ul class="navbar-nav px-3">
+      <li class="nav-item text-nowrap">
+        <a class="nav-link" (click)="handleLogout()">Logout</a>
+      </li>
+    </ul>
+  </nav>
 
-<div class="container-fluid">
-  <div class="row">
-    <app-sidebar></app-sidebar>
+  <div class="container-fluid">
+    <div class="row">
+      <app-sidebar [items]="sidebarItems"></app-sidebar>
 
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-    <router-outlet></router-outlet>
-    </main>
+      <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <router-outlet></router-outlet>
+      </main>
+    </div>
   </div>
 </div>
